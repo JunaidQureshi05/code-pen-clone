@@ -15,6 +15,11 @@ window.onload = function () {
 </html>
 `);
   htmlEditor.session.setUseWrapMode(true);
+  htmlEditor.setShowPrintMargin(false);
+  htmlEditor.session.on('change', function (delta) {
+    console.log('html changed');
+    update();
+  });
 
   //   Make css editor
   var cssEditor = ace.edit('css');
@@ -22,6 +27,11 @@ window.onload = function () {
   cssEditor.setTheme('ace/theme/nord_dark');
   cssEditor.session.setValue('/*css goes here*/');
   cssEditor.session.setUseWrapMode(true);
+  cssEditor.setShowPrintMargin(false);
+  cssEditor.session.on('change', function (delta) {
+    console.log('css changed');
+    update();
+  });
 
   //  make js editor
   var jsEditor = ace.edit('javascript');
@@ -29,4 +39,25 @@ window.onload = function () {
   jsEditor.setTheme('ace/theme/nord_dark');
   jsEditor.session.setValue('//js goes here');
   jsEditor.session.setUseWrapMode(true);
+  jsEditor.setShowPrintMargin(false);
+  jsEditor.session.on('change', function (delta) {
+    console.log('js changed');
+    update();
+  });
+
+  function update() {
+    let output =
+      document.querySelector('.virtual-iframe').contentWindow.document;
+    output.open();
+    output.write(
+      '<style>' +
+        cssEditor.getValue() +
+        '</style>' +
+        htmlEditor.getValue() +
+        '<script>' +
+        jsEditor.getValue() +
+        '</script>'
+    );
+    output.close();
+  }
 };
