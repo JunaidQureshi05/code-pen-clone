@@ -20,6 +20,7 @@ window.onload = function () {
     console.log('html changed');
     update();
   });
+  htmlEditor.setHighlightActiveLine(false);
 
   //   Make css editor
   var cssEditor = ace.edit('css');
@@ -32,6 +33,7 @@ window.onload = function () {
     console.log('css changed');
     update();
   });
+  cssEditor.setHighlightActiveLine(false);
 
   //  make js editor
   var jsEditor = ace.edit('javascript');
@@ -44,6 +46,7 @@ window.onload = function () {
     console.log('js changed');
     update();
   });
+  jsEditor.setHighlightActiveLine(false);
 
   function update() {
     let output =
@@ -61,3 +64,9 @@ window.onload = function () {
     output.close();
   }
 };
+
+window.addEventListener('resize', (e) => {
+  for (var i = 0; i < document.getElementsByClassName('code').length; i++)
+    document.getElementsByClassName('code')[i].style.height =
+      document.querySelector('.code-editor').clientHeight - 40 + 'px';
+});
