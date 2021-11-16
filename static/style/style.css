@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333642;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.coder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.code {
+  background-color: #1d1e22;
+}
+
+.ace_gutter {
+  background-color: #1d1e22 !important;
+}
