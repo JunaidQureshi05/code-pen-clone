@@ -13,11 +13,13 @@ body {
   width: 100vw;
   display: grid;
   grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 .coder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 .code {
@@ -26,4 +28,12 @@ body {
 
 .ace_gutter {
   background-color: #1d1e22 !important;
+}
+
+.ace_gutter-cell.ace_gutter-active-line.ace_info {
+  background-color: #1d1e22 !important;
+}
+
+.output {
+  background-color: #1d1e22;
 }
